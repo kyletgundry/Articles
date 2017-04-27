@@ -1,0 +1,36 @@
+<h1>Articles:</h1>
+<div class="articles">
+  <div>
+    Title: <input type="text" v-model="newArticleTitle">
+    Author: <input type="text" v-model="newArticleAuthor">
+    Image: <input type="text" v-model="newArticleImage">
+    Date: <input type="text" v-model="newArticleDate">
+    Description: <input type="text" v-model="newArticleDescription">
+    <button v-on:click="addArticle()">Add Article</button>
+  </div>
+  <div>
+    <p>Search by Title: <input type="text" v-model="titleFilter"></p>
+    <p>Search by Title: <input type="text" v-model="authorFilter"></p>
+  </div>
+  <p>------------------------------------------------------</p>
+    <table style="width:100%">
+    <tr>
+      <th v-on:click="setSortAttribute('title')">Title:</th>
+      <th v-on:click="setSortAttribute('author')">Author:</th>
+      <th v-on:click="setSortAttribute('image')">Image Url:</th>
+      <th v-on:click="setSortAttribute('date')">Date:</th>
+      <th v-on:click="setSortAttribute('description')">Description:</th>
+    </tr>
+    <transition-group name="fade">
+      <tr v-for="article in filteredArticle" v-bind:key="article.id">
+          <td>{{ article.title }}</td>
+          <td>{{ article.author }}</td>
+          <td>{{ article.image }}</td>
+          <td>{{ article.date }}</td>
+          <td>{{ article.description }}</td>
+      </tr>
+    </transition-group>
+        <!-- <div>
+          <img src="{{ article.image }}" alt="">
+        </div> -->
+</div>
