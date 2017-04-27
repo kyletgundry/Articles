@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
       newArticleDescription: "",
       titleFilter: "",
       authorFilter: "",
+      sortAttribute: "title",
       sortAscending: true
     },
     computed: {
@@ -24,9 +25,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
         });
         var sorted = filtered.sort(function(article1, article2) {
           if (this.sortAscending) {
-            return article1[this.sortAttribute] > article2[this.sortAttribute];
+            return article1[this.sortAttribute].localeCompare(article2[this.sortAttribute]);
           } else {
-            return article1[this.sortAttribute] < article2[this.sortAttribute];
+            return article2[this.sortAttribute].localeCompare(article1[this.sortAttribute]);
           }
         }.bind(this));
         return filtered;

@@ -12,6 +12,12 @@
     <p>Search by Title: <input type="text" v-model="titleFilter"></p>
     <p>Search by Title: <input type="text" v-model="authorFilter"></p>
   </div>
+
+<!--     <transition-group name="fade">
+      <div v-for="article in filteredArticle" v-bind:key="article.id">
+          {{ article.title }}
+      </div>
+    </transition-group> -->
   <p>------------------------------------------------------</p>
     <table style="width:100%">
     <tr>
@@ -21,7 +27,7 @@
       <th v-on:click="setSortAttribute('date')">Date:</th>
       <th v-on:click="setSortAttribute('description')">Description:</th>
     </tr>
-    <transition-group name="fade">
+    <tbody name="fade" is="transition-group">
       <tr v-for="article in filteredArticle" v-bind:key="article.id">
           <td>{{ article.title }}</td>
           <td>{{ article.author }}</td>
@@ -33,4 +39,5 @@
         <!-- <div>
           <img src="{{ article.image }}" alt="">
         </div> -->
+    </table>
 </div>
